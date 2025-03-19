@@ -9,6 +9,10 @@
 
 double calculate_arithmetical_mean_of_nonzero_elements(int** matrix, int n, int m) {
 
+	if (n <= 0 || m <= 0 || matrix == nullptr) {
+		return 0.0;
+	}
+
 	int count = 0;
 	double sum = 0;
 
@@ -16,12 +20,12 @@ double calculate_arithmetical_mean_of_nonzero_elements(int** matrix, int n, int 
 
 		for (int j = 0; j < m; j++) {
 
-			if (*(matrix + i * m + j) != 0) {
+			if (matrix[i][j] != 0) {
 				sum += matrix[i][j];
 				count++;
 			}
 		}
 	}
 
-	return sum / count > 0 ? sum / count : 0;
+	return count > 0 ? sum / count : 0.0;
 }
